@@ -1,35 +1,31 @@
 <?php
-	$request="http://api.openweathermap.org/data/2.5/weather?APPID=8f7dcad34954743aefc85f3a8c8eb847&q=Boston";
+
+	//$city="seattle";
+	$city=$_POST['city'];
+
+	$request="http://api.openweathermap.org/data/2.5/weather?APPID=8f7dcad34954743aefc85f3a8c8eb847&q=".$city."&units=imperial";
+	
+	//$request="http://api.openweathermap.org/data/2.5/find?weather?APPID=8f7dcad34954743aefc85f3a8c8eb847&q=".$city."&units=imperial";
+
 	$response=file_get_contents($request);
 	$jsonData = json_decode($response, true);
 
-	var_dump($jsonData);
+	// var_dump($jsonData);
+	
+ 	// echo "Description".$jsonData['weather'][0]['description']."<br>";
 
-	//description
- echo $jsonData['weather'][0]['description'];
- //temperature
- echo $jsonData['main']['temp'];
+ 	
 
-	// print_r($jsonData);
+ 	// echo "CurrentTemp".$jsonData['main']['temp']."<br>";
 
-	// print $jsonData->{'coord'};
+ 	// echo "MaxTemp".$jsonData['main']['temp_max']."<br>";
 
-	// $min_1 = $jsonData['list'][0]['temp']['min'];
-	// $max_1 = $jsonData['list'][0]['temp']['max'];
-	// $min_2 = $jsonData['list'][1]['temp']['min'];
-	// $max_2 = $jsonData['list'][1]['temp']['max'];
-	// echo $min_1.' - '.$max_1.'<br><br>';
-	// echo $min_2.' - '.$max_2.'<br><br>';
+ 	// echo "MinTemp".$jsonData['main']['temp_min']."<br>";
 
-	// $response=file_get_contents($request);
-	// $jsonobj=json_decode($response);
-	// print_r($jsonobj);
+ 	// echo "Humidity".$jsonData['main']['humidity']."<br>";
 
-	// echo "<br><br>";
-	// print $jsonobj->{'temp_min'};
-	 
-
-
+ 	print json_encode(array("Description" => "{$jsonData['weather'][0]['description']}"));
+ 
 
 
 ?>
