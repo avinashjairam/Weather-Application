@@ -10,16 +10,14 @@
     <meta name="author" content="">
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
    <link href="./css/customCss.css" rel="stylesheet">
-   <link href="./css/sticky-footer-navbar.css" rel="stylesheet">
+  <!--  <link href="./css/sticky-footer-navbar.css" rel="stylesheet"> -->
 
     <title>WEATHER APP</title>
 
    
    
 
-    <!-- Custom styles for this template -->
-    <link href="./css/sticky-footer-navbar.css" rel="stylesheet">
-
+ 
     
   </head>
 
