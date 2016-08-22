@@ -67,6 +67,9 @@
 
 
           <div id="WeatherInformation">
+            <div id="location">
+              Location:
+            </div>            
             <div id="weatherDescription">
               Description:
             </div>
@@ -82,6 +85,12 @@
             <div id="humidity">
               Humidity:
             </div>
+          </div>
+
+          <br>
+
+          <div id="error" class="alert alert-danger">
+            <strong>Warning!</strong> Please enter a valid city name.
           </div>
 
         </div>
@@ -107,6 +116,7 @@
     <script>
       $(document).ready(function(){
         $("#WeatherInformation").css("display","none");
+        $("#error").css("display","none");
 
       });
 
@@ -127,21 +137,32 @@
             type:'POST',
             success:function(data){
               if(!data.error){
-                alert(data.Description);
-        
-                weatherIcon=data.Icon;
 
-                weatherIconUrl="http://openweathermap.org/img/w/"+weatherIcon+".png";
+                if(!data.Name){
+                  $('#error').css("display","block");
+                   $("#WeatherInformation").css("display","none");
+                }
+                else{
+                  $("#error").css("display","none");
+                  
+                  alert(data.Description);
+          
+                  weatherIcon=data.Icon;
 
+                  weatherIconUrl="http://openweathermap.org/img/w/"+weatherIcon+".png";
 
-                $('#weatherDescription').html(data.Description);
-                $('#weatherDescription').prepend('<img src='+weatherIconUrl +" alt=\"weather icon\"/><br>")
-                $('#temp').html("current temp: " + data.CurrentTemp+"&deg");
-                $('#minTemp').html("min temp: " + data.MinTemp+"&deg");
-                $('#maxTemp').html("max temp: " + data.MaxTemp+"&deg");
-                $('#humidity').html("humidity: " + data.Humidity+"&#37");
+                  $('#location').html(data.Name);
+                  $('#weatherDescription').html(data.Description);
+                  $('#weatherDescription').prepend('<img src='+weatherIconUrl +" alt=\"weather icon\"/><br>")
+                  $('#temp').html("current temp: " + data.CurrentTemp+"&deg");
+                  $('#minTemp').html("min temp: " + data.MinTemp+"&deg");
+                  $('#maxTemp').html("max temp: " + data.MaxTemp+"&deg");
+                  $('#humidity').html("humidity: " + data.Humidity+"&#37");
 
-                $("#WeatherInformation").css("display","block");
+                  $("#WeatherInformation").css("display","block");
+                }
+
+             
 
               }
             }

@@ -8,15 +8,14 @@
 	$jsonData = json_decode($response, true);
 
 
- 	print json_encode(array("Description" => "{$jsonData['weather'][0]['description']}",
+ 	print json_encode(array("Name"		  => "{$jsonData['name']}",
+ 							"Description" => "{$jsonData['weather'][0]['description']}",
  							"Icon" 		  => "{$jsonData['weather'][0]['icon']}",
  							"CurrentTemp" => "{$jsonData['main']['temp']}",
  							"MaxTemp"	  => "{$jsonData['main']['temp_max']}",
  							"MinTemp"	  => "{$jsonData['main']['temp_min']}",
  							"Humidity"	  => "{$jsonData['main']['humidity']}"
-
- 							 ));
+ 							)
+ 					  );
  
-
-
 ?>
