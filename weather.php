@@ -56,7 +56,7 @@
         <div id="custom-search-input">
           <div class="input-group">
               <form id="weatherForm" method="post">
-                 <input id="weatherLocation" name="location" type="text" class="search-query form-control" placeholder="Enter city or zipcode" />
+                 <input id="weatherLocation" name="location" type="text" class="search-query form-control" placeholder="Enter location or zipcode" />
                </form>
                 <span class="input-group-btn">
                     <button class="btn btn-danger" type="submit" form="weatherForm">
@@ -65,32 +65,38 @@
                 </span>
           </div>
 
+<div >
+ 
+</div>
 
-          <div id="WeatherInformation">
+
+
+
+          <div id="WeatherInformation" class="alert alert-success">
             <div id="location">
-              Location:
+              <strong>Location:</strong>
             </div>            
             <div id="weatherDescription">
-              Description:
+              <strong>Description:</strong>
             </div>
             <div id="temp">
-              Current Temp:
+              <strong>Current Temp:</strong>
             </div>
             <div id="minTemp">
-              Min Temp:
+              <strong>Min Temp:</strong>
             </div>
             <div id="maxTemp">
-              Max Temp:
+              <strong>Max Temp:</strong>
             </div>
             <div id="humidity">
-              Humidity:
+              <strong>Humidity:</strong>
             </div>
           </div>
 
           <br>
 
           <div id="error" class="alert alert-danger">
-            <strong>Warning!</strong> Please enter a valid city name.
+            <strong>Warning!</strong> Please enter a valid location name.
           </div>
 
         </div>
@@ -121,19 +127,19 @@
       });
 
       $("#weatherForm").submit(function (event){
-        var city=$("#weatherLocation").val();
+        var location=$("#weatherLocation").val();
         var weatherIcon;
         var weatherIconUrl;
 
-        city=city.replace(" ","");
+        location=location.replace(" ","");
 
         event.preventDefault();
-        //alert(city);
+        //alert(location);
 
           $.ajax({
             url:'weatherApp.php',
             dataType:"json",
-            data:{city:city},
+            data:{location:location},
             type:'POST',
             success:function(data){
               if(!data.error){
